@@ -16,12 +16,12 @@ struct SignUpView: View {
     @State private var isEmailValid = true
     @State private var isPhoneValid = true
     @State private var isPhotoValid = true
-    @State private var selectedImage: UIImage?
+    @State private var selectedImage: UIImage? //ImagePicker
     
-    @FocusState private var isFocused: Bool // Состояние фокуса для TextField
+    @FocusState private var isFocused: Bool // Focus state for TextField
 
-    @State private var showResultTrue = false
-    @State private var showResultFalse = false // nil означает отсутствие результата регистрации
+    @State private var showResultTrue = false // Validator for navigating to registration Success view
+    @State private var showResultFalse = false // Validator for navigating to registration False view
 
     var body: some View {
                 VStack {
@@ -42,8 +42,8 @@ struct SignUpView: View {
                                 placeholder: "Email",
                                 errorText: "Invalid email format"
                             )
-                            .autocorrectionDisabled(true) // Отключает автокоррекцию и подчеркивание
-                            .textInputAutocapitalization(.never) // Отключает автозаглавные буквы
+                            .autocorrectionDisabled(true)
+                            .textInputAutocapitalization(.never)
                             
                             TextFieldView(
                                 text: $viewModel.phone,
@@ -95,7 +95,7 @@ struct SignUpView: View {
                     }
                     .offset(y: 25)
                 }
-                .hideKeyboard() // Применение модификатора ко всему содержимому VStack
+                .hideKeyboard()
                 .onTapGesture {
                     isFocused = false
                 }

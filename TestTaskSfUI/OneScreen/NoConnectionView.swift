@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct NoConnectionView: View {
-    @ObservedObject var networkMonitor: NetworkMonitor // Пробрасываем объект наблюдателя
-
+    @ObservedObject var networkMonitor: NetworkMonitor // Passing the observer object
+    
     var body: some View {
         VStack {
             Image("NoConnect")
@@ -25,6 +25,4 @@ struct NoConnectionView: View {
     }
 }
 
-//#Preview {
-//    NoConnectionView(networkMonitor: NetworkMonitor)
-//}
+

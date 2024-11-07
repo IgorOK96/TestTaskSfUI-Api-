@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PhotoLoadView: View {
-    @Binding var selectedImage: UIImage?
-    @Binding var isValid: Bool
+    @Binding var selectedImage: UIImage? // Binding for Image Picker
+    @Binding var isValid: Bool // Binding for validator to activate error state
     var isUploaded: Bool {
         selectedImage == nil
     }

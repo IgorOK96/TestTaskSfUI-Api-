@@ -2,7 +2,7 @@
 //  NetworkManager.swift
 //  TestTaskSfUI
 //
-//  Created by user246073 on 11/6/24.
+//  Created by user246073 on 11/7/24.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ class NetworkManager {
     
     private init() {}
     
-    // Функция для получения списка пользователей
+    // Function to fetch a list of users
     func getUsers(page: Int = 1, count: Int = 6, completion: @escaping (Result<UsersResponse, Error>) -> Void) {
         let url = baseURL.appendingPathComponent("/users")
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
@@ -55,7 +55,7 @@ class NetworkManager {
         task.resume()
     }
     
-    // Функция для получения токена
+    // Function to fetch a token
     func getToken(completion: @escaping (Result<String, Error>) -> Void) {
         let url = baseURL.appendingPathComponent("/token")
         var request = URLRequest(url: url)
@@ -85,11 +85,11 @@ class NetworkManager {
         task.resume()
     }
     
-    // Функция для регистрации нового пользователя
+    // Function to register a new user
     func registerUser(user: UserRegistrationData, completion: @escaping (Result<UserRegistrationResponse, Error>) -> Void) {
         let url = baseURL.appendingPathComponent("/users")
         
-        // Сначала получаем токен
+        // First, retrieve the token
         getToken { tokenResult in
             switch tokenResult {
             case .success(let token):
@@ -127,7 +127,7 @@ class NetworkManager {
                             completion(.success(registrationResponse))
                         }
                     } catch {
-                        // Попробуем декодировать сообщение об ошибке валидации
+                        // Attempt to decode validation error message
                         if let errorResponse = try? decoder.decode(APIErrorResponse.self, from: data) {
                             let errorMessages = errorResponse.fails?.compactMap { "\($0.key): \($0.value.joined(separator: ", "))" }
                                 .joined(separator: "\n") ?? errorResponse.message
@@ -155,27 +155,27 @@ class NetworkManager {
         var body = Data()
         let lineBreak = "\r\n"
         
-        // Добавляем имя
+        // Add name
         body.append("--\(boundary)\(lineBreak)")
         body.append("Content-Disposition: form-data; name=\"name\"\(lineBreak)\(lineBreak)")
         body.append("\(user.name)\(lineBreak)")
         
-        // Добавляем email
+        // Add email
         body.append("--\(boundary)\(lineBreak)")
         body.append("Content-Disposition: form-data; name=\"email\"\(lineBreak)\(lineBreak)")
         body.append("\(user.email)\(lineBreak)")
         
-        // Добавляем телефон
+        // Add phone
         body.append("--\(boundary)\(lineBreak)")
         body.append("Content-Disposition: form-data; name=\"phone\"\(lineBreak)\(lineBreak)")
         body.append("\(user.phone)\(lineBreak)")
         
-        // Добавляем position_id
+        // Add position_id
         body.append("--\(boundary)\(lineBreak)")
         body.append("Content-Disposition: form-data; name=\"position_id\"\(lineBreak)\(lineBreak)")
         body.append("\(user.position_id)\(lineBreak)")
         
-        // Добавляем фото
+        // Add photo
         body.append("--\(boundary)\(lineBreak)")
         body.append("Content-Disposition: form-data; name=\"photo\"; filename=\"photo.jpg\"\(lineBreak)")
         body.append("Content-Type: image/jpeg\(lineBreak)\(lineBreak)")
@@ -203,6 +203,7 @@ class NetworkManager {
         let name: String
     }
     
+    // Function to retrieve available positions
     func getPositions(completion: @escaping (Result<[Position], Error>) -> Void) {
         let url = baseURL.appendingPathComponent("/positions")
         var request = URLRequest(url: url)

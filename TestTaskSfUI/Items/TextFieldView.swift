@@ -103,7 +103,6 @@ struct TextFieldView: View {
     }
 }
 
-// Вспомогательная структура для работы с @Binding в Preview
 struct StatefulPreviewWrapper<Value: Equatable, Content: View>: View {
     @State private var value: Value
     private let content: (Binding<Value>) -> Content

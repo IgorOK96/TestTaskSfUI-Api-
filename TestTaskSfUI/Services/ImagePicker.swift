@@ -36,18 +36,18 @@ struct ImagePicker: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             picker.dismiss(animated: true)
             
-            // Получаем изображение
+            // Get the selected image
             if let image = info[.originalImage] as? UIImage,
                let imageData = image.jpegData(compressionQuality: 1.0) {
                 
-                // Проверка размера файла (не больше 5 Мб)
+                // Check file size (no larger than 5 MB)
                 let fileSizeInMB = Double(imageData.count) / (1024 * 1024)
                 guard fileSizeInMB <= 5 else {
                     parent.selectedImage = nil
                     return
                 }
                 
-                // Проверка разрешения (не меньше 70x70 пикселей)
+                // Check resolution (at least 70x70 pixels)
                 let width = image.size.width
                 let height = image.size.height
                 guard width >= 70 && height >= 70 else {
@@ -55,13 +55,13 @@ struct ImagePicker: UIViewControllerRepresentable {
                     return
                 }
                 
-                // Проверка формата изображения (jpeg/jpg)
+                // Check image format (jpeg/jpg)
                 guard let imageType = imageType(from: imageData), imageType == "jpeg" else {
                     parent.selectedImage = nil
                     return
                 }
                 
-                // Если все проверки пройдены, устанавливаем изображение
+                // If all checks pass, set the image
                 parent.errorMessage = nil
                 parent.selectedImage = image
             } else {
@@ -80,7 +80,6 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
     }
 }
-
 //#Preview {
 //    ImagePicker()
 //}

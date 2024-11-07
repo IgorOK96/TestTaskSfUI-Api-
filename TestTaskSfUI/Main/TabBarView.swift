@@ -2,13 +2,13 @@
 //  TabBarView.swift
 //  TestTaskSwiftUI
 //
-//  Created by user246073 on 11/6/24.
+//  Created by user246073 on 11/7/24.
 //
 
 import SwiftUI
 
 struct TabBarView: View {
-    @StateObject private var networkMonitor = NetworkMonitor()
+    @StateObject private var networkMonitor = NetworkMonitor() // Connection with network monitoring
 
     @State private var selectedTab = 0
     @State private var isKeyboardVisible = false
@@ -23,10 +23,10 @@ struct TabBarView: View {
                     SignUpView()
                         .tag(1)
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Скрываем индикатор страниц
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide page indicator
                 
                 if !isKeyboardVisible {
-                    // Кастомный горизонтальный таб-бар
+                    // Custom horizontal tab bar
                     HStack(spacing: 0) {
                         TabButton(
                             iconName: "person.3.sequence.fill",
@@ -49,7 +49,7 @@ struct TabBarView: View {
                     .frame(height: 40)
                     .offset(y: 10)
                     .background(Color(.systemGray6))
-                    .zIndex(1) // Устанавливаем высокий z-индекс для таб-бара
+                    .zIndex(1) // Set high z-index for the tab bar
                 }
             }.navigationBarBackButtonHidden(true)
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
@@ -64,4 +64,3 @@ struct TabBarView: View {
         
     }
 }
-

@@ -42,8 +42,8 @@ struct UserViewRow: View {
                             .foregroundColor(.gray)
                             .lineLimit(1)
                             .lineSpacing(6)
-                            .truncationMode(.middle) // Обрезка в середине, если строка слишком длинная
-                            .frame(maxWidth: .infinity, alignment: .leading) // Оставляет email в пределах строки
+                            .truncationMode(.middle)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .truncationMode(.tail)
 
                         Text(user.phone)
@@ -65,7 +65,7 @@ struct CourseDetailsView_Previews: PreviewProvider {
                 id: 1,
                 name: "Igor Kondratenko Vitalievich",
                 email: "igorook969@gmail.com",
-                phone: "380991408318",
+                phone: "380962221133",
                 position: "iOS Developer",
                 photo: ""
             )

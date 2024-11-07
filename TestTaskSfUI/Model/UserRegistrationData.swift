@@ -2,7 +2,7 @@
 //  UserRegistrationData.swift
 //  TestTaskSfUI
 //
-//  Created by user246073 on 11/6/24.
+//  Created by user246073 on 11/7/24.
 //
 
 import Foundation

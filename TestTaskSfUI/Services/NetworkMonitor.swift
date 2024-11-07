@@ -23,9 +23,10 @@ class NetworkMonitor: ObservableObject {
         }
         monitor.start(queue: queue)
     }
+    
     func checkConnection() {
-            // Выполняем обновление состояния сети
-            let path = monitor.currentPath
-            isConnected = (path.status == .satisfied)
-        }
+        // Perform network status update
+        let path = monitor.currentPath
+        isConnected = (path.status == .satisfied)
+    }
 }

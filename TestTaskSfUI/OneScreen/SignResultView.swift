@@ -10,7 +10,7 @@ import SwiftUI
 struct SignResultView: View {
     let valid: Bool
 
-    @State private var navigateToMain = false
+    @State private var navigateToMain = false // Navigation activator
 
     var body: some View {
         VStack(spacing: 15) {
@@ -19,9 +19,8 @@ struct SignResultView: View {
                     "That email is already registered")
             .font(.custom("NunitoSans-Regular", size: 20))
             
-            // Кнопка действия
             PrimaryButton(title: valid ? "Got it" : "Try again", action: {
-                    navigateToMain = true  // Переход на главный экран
+                    navigateToMain = true  // Navigate to the main screen
             }, isActive: true)
             .navigationDestination(isPresented: $navigateToMain) {
                 TabBarView()
