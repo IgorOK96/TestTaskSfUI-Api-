@@ -26,7 +26,7 @@ This SwiftUI application allows users to register and view existing users, demon
 ## Getting Started
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/IgorOK96/TestTaskSfUI-Api-
  
  
  Code Structure
