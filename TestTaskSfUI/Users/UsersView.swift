@@ -19,7 +19,7 @@ struct UsersView: View {
                     ForEach(viewModel.users, id: \.id) { user in
                         UserViewRow(user: user)
                             .onAppear {
-                                // Подгружаем следующую страницу, когда достигли конца списка
+                                // Load the next page when reaching the end of the list
                                 if viewModel.users.last == user {
                                     viewModel.fetchUsers()
                                 }
@@ -44,7 +44,7 @@ struct UsersView: View {
                 .listStyle(PlainListStyle())
                 .refreshable {
                     viewModel.fetchUsers()
-                } // Вызовите обновление при свайпе
+                } // Trigger refresh on swipe
             }
         }
     }
