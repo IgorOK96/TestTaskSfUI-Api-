@@ -102,18 +102,17 @@ struct SignUpView: View {
                 .onAppear {
                     viewModel.fetchPositions() }
                 .navigationDestination(isPresented: $showResultTrue) {
-                        SignResultView(valid: true)
-                    }
-                    .navigationDestination(isPresented: $showResultFalse) {
-                        SignResultView(valid: false)
-                    }
+                    SignResultView(valid: true)
+                }
+                .navigationDestination(isPresented: $showResultFalse) {
+                    SignResultView(valid: false)
+                }
             }
             .onChange(of: viewModel.registrationSuccess) { newValue, _ in
                 showResultTrue = true                    }
             .onChange(of: viewModel.registrationFalse) { newValue, _ in
                 showResultFalse = true
             }
-        
     }
 }
 extension Bool: @retroactive Identifiable {

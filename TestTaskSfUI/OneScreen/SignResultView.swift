@@ -31,5 +31,5 @@ struct SignResultView: View {
 }
 
 #Preview {
-    SignResultView(valid: false)
+    SignResultView(valid: true)
 }
