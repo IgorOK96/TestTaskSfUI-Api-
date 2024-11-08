@@ -115,9 +115,6 @@ struct SignUpView: View {
             }
     }
 }
-extension Bool: @retroactive Identifiable {
-    public var id: Bool { self }
-}
     
 
 //#Preview {
