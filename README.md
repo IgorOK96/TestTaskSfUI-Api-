@@ -25,7 +25,7 @@ This SwiftUI application allows users to register and view existing users, demon
  
      1.    Views
      •    UsersView.swift: Displays the list of users.
-   ![image](https://github.com/user-attachments/assets/5eb06f29-6841-4dd6-b47c-0d892d56abfb)
+   ![image](https://github.com/user-attachments/assets/0f0f61b2-8e6d-4647-86b6-b4a496238ddb)
 
      •    SignUpView.swift: Manages the user registration process.
    ![image](https://github.com/user-attachments/assets/0b1813ec-3091-43f2-8998-b2793fa309d2)
