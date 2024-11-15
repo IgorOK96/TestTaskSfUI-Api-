@@ -47,13 +47,15 @@ struct CustomButtonStyle: ButtonStyle {
                     ? (configuration.isPressed ? pressedColor : activeColor)
                     : inactiveBackgroundColor
             )
-            .clipShape(RoundedRectangle(cornerRadius: 35))
-            .overlay(
-                RoundedRectangle(cornerRadius: 35)
-                    .stroke(Color.white, lineWidth: 2)
-            )
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 5)
+//                    .stroke(Color.white, lineWidth: 2)
+//            )
     }
 }
+
+
 
 #Preview {
     PrimaryButton(title: "Sign up", action: {}, isActive: true)

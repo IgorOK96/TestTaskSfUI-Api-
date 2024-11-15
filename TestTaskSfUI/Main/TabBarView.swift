@@ -53,14 +53,14 @@ struct TabBarView: View {
                         .zIndex(1) // Set high z-index for the tab bar
                     }
                 }.navigationBarBackButtonHidden(true)
+                    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                        isKeyboardVisible = true
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                        isKeyboardVisible = false
+                    }
             }
-                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-                    isKeyboardVisible = true
-                }
-                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                    isKeyboardVisible = false
-                }
-        } else {
+                        } else {
             NoConnectionView(networkMonitor: networkMonitor)
         }
         

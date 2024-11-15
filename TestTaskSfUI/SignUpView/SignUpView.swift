@@ -20,9 +20,6 @@ struct SignUpView: View {
     
     @FocusState private var isFocused: Bool // Focus state for TextField
 
-    @State private var showResultTrue = false // Validator for navigating to registration Success view
-    @State private var showResultFalse = false // Validator for navigating to registration False view
-
     var body: some View {
                 VStack {
                     CustomRectangleView()
@@ -44,6 +41,7 @@ struct SignUpView: View {
                             )
                             .autocorrectionDisabled(true)
                             .textInputAutocapitalization(.never)
+                            
                             
                             TextFieldView(
                                 text: $viewModel.phone,
@@ -101,17 +99,12 @@ struct SignUpView: View {
                 }
                 .onAppear {
                     viewModel.fetchPositions() }
-                .navigationDestination(isPresented: $showResultTrue) {
+                .navigationDestination(isPresented:  $viewModel.registrationSuccess) {
                     SignResultView(valid: true)
                 }
-                .navigationDestination(isPresented: $showResultFalse) {
+                .navigationDestination(isPresented:  $viewModel.registrationFalse) {
                     SignResultView(valid: false)
                 }
-            }
-            .onChange(of: viewModel.registrationSuccess) { newValue, _ in
-                showResultTrue = true                    }
-            .onChange(of: viewModel.registrationFalse) { newValue, _ in
-                showResultFalse = true
             }
     }
 }
