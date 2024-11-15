@@ -25,12 +25,17 @@ This SwiftUI application allows users to register and view existing users, demon
  
      1.    Views
      •    UsersView.swift: Displays the list of users.
+   ![image](https://github.com/user-attachments/assets/5eb06f29-6841-4dd6-b47c-0d892d56abfb)
+
      •    SignUpView.swift: Manages the user registration process.
+   ![image](https://github.com/user-attachments/assets/0b1813ec-3091-43f2-8998-b2793fa309d2)
+
+     
      2.    View Models
      •    UsersViewModel.swift: Handles data fetching and pagination for UsersView.
      •    RegistrationViewModel.swift: Manages form validation and registration logic in SignUpView.
      3.    Networking
-     •    NetworkManager.swift: Contains methods for fetching users, registering new users, and retrieving token-based authenticatio
+     •    NetworkManager.swift: Contains methods for fetching users, registering new users, and retrieving token-based authentication.
  
  ---
 
@@ -58,3 +63,5 @@ API used: https://frontend-test-assignment-api.abz.agency/api/v1
          ...
      }
  }
+
+
